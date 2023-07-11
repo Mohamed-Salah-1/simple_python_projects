@@ -1,6 +1,13 @@
-import psutil
+"""
+My Module - Example module utilizing the psutil library.
+
+This module demonstrates the usage of the psutil library to retrieve system
+information such as CPU usage, memory usage, and network statistics.
+"""
 import time
 import platform
+import psutil
+
 
 # Get network information
 net_io_counters1 = psutil.net_io_counters()
@@ -15,29 +22,29 @@ download_speed = bytes_recv / (1024 * 1024)
 
 # Get information about other connected devices
 net_connections = psutil.net_connections()
-output = ""
+OUTPUT = ""
 for conn in net_connections:
     if conn.status == "ESTABLISHED" and conn.pid is not None:
         try:
-            process_name = psutil.Process(conn.pid).name()
+            PROCESS_NAME = psutil.Process(conn.pid).name()
         except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
-            process_name = "-"
-        if "chrome" not in process_name.lower() and "firefox" not in process_name.lower():
-            local_address = "{}:{}".format(conn.laddr.ip, conn.laddr.port)
-            remote_address = "{}:{}".format(conn.raddr.ip, conn.raddr.port)
+            PROCESS_NAME = "-"
+        if "chrome" not in PROCESS_NAME.lower() and "firefox" not in PROCESS_NAME.lower():
+            local_address = f"{conn.laddr.ip}, {conn.laddr.port}"
+            remote_address = f"{conn.raddr.ip}, {conn.raddr.port}"
             os_name = platform.system()
-            output += f"Local address: {local_address}\n"
-            output += f"Remote address: {remote_address}\n"
-            output += f"Process ID: {conn.pid}\n"
-            output += f"Process name: {process_name}\n"
-            output += f"Operating System: {os_name}\n"
-            output += f"Status: {conn.status}\n\n"
+            OUTPUT += f"Local address: {local_address}\n"
+            OUTPUT += f"Remote address: {remote_address}\n"
+            OUTPUT += f"Process ID: {conn.pid}\n"
+            OUTPUT += f"Process name: {PROCESS_NAME}\n"
+            OUTPUT += f"Operating System: {os_name}\n"
+            OUTPUT += f"Status: {conn.status}\n\n"
 
-output += f"Upload speed: {upload_speed:.2f} MB/s\n"
-output += f"Download speed: {download_speed:.2f} MB/s\n"
+OUTPUT += f"Upload speed: {upload_speed:.2f} MB/s\n"
+OUTPUT += f"Download speed: {download_speed:.2f} MB/s\n"
 
-# Write output to file
-with open("network_info.txt", "w") as file:
-    file.write(output)
+# Write OUTPUT to file
+with open("network_info.txt", "w", encoding='utf-8') as file:
+    file.write(OUTPUT)
 
 print("Network information saved to network_info.txt")

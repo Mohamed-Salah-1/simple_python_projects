@@ -1,0 +1,37 @@
+Local address: 127.0.0.1, 46607
+Remote address: 127.0.0.1, 51450
+Process ID: 2338
+Process name: node
+Operating System: Linux
+Status: ESTABLISHED
+
+Local address: 127.0.0.1, 46607
+Remote address: 127.0.0.1, 60422
+Process ID: 2233
+Process name: node
+Operating System: Linux
+Status: ESTABLISHED
+
+Local address: 172.16.5.4, 35214
+Remote address: 51.144.22.113, 443
+Process ID: 2338
+Process name: node
+Operating System: Linux
+Status: ESTABLISHED
+
+Local address: 127.0.0.1, 46607
+Remote address: 127.0.0.1, 60430
+Process ID: 2233
+Process name: node
+Operating System: Linux
+Status: ESTABLISHED
+
+Local address: 127.0.0.1, 46607
+Remote address: 127.0.0.1, 51446
+Process ID: 2233
+Process name: node
+Operating System: Linux
+Status: ESTABLISHED
+
+Upload speed: 0.03 MB/s
+Download speed: 0.01 MB/s
